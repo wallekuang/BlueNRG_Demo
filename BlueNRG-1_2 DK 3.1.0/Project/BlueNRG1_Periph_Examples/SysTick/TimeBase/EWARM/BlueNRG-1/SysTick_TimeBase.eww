@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\SysTick_TimeBase.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>TimeBase</project>
+        <configuration>Debug</configuration>
+      </member>
+      <member>
+        <project>TimeBase</project>
+        <configuration>Release</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

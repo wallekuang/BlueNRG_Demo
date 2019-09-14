@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\DTM.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>DTM</project>
+      <configuration>Release_SPI</configuration>
+      </member>
+    <member>
+        <project>DTM</project>
+      <configuration>Release_SPI_NOUPDATER</configuration>
+      </member>
+    <member>
+        <project>DTM</project>
+      <configuration>Release_UART</configuration>
+      </member>
+    <member>
+        <project>DTM</project>
+      <configuration>Release_UART_NOUPDATER</configuration>
+      </member>
+    <member>
+        <project>DTM</project>
+      <configuration>Release_UART_SLEEP</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

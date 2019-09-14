@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_Throughput.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>RADIO_Throughput</project>
+      <configuration>Bidirectional_RX</configuration>
+      </member>
+    <member>
+        <project>RADIO_Throughput</project>
+      <configuration>Bidirectional_TX</configuration>
+      </member>
+    <member>
+        <project>RADIO_Throughput</project>
+      <configuration>Unidirectional</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

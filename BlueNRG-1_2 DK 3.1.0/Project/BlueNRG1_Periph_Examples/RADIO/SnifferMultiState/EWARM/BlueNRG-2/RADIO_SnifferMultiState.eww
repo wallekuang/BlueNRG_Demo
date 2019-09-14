@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_SnifferMultiState.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>SnifferMultiState</project>
+      <configuration>Release</configuration>
+      </member>
+    <member>
+        <project>SnifferMultiState</project>
+      <configuration>Sniffer_Encryption</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

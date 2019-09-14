@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\I2C_Master_w_Sensor.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>Master_w_Sensor</project>
+        <configuration>Dma</configuration>
+      </member>
+      <member>
+        <project>Master_w_Sensor</project>
+        <configuration>Interrupt</configuration>
+      </member>
+      <member>
+        <project>Master_w_Sensor</project>
+        <configuration>Polling</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

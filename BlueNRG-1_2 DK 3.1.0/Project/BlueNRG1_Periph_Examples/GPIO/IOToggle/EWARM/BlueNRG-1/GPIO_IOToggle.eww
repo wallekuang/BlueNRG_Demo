@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\GPIO_IOToggle.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>IOToggle</project>
+        <configuration>Debug</configuration>
+      </member>
+      <member>
+        <project>IOToggle</project>
+        <configuration>Release</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

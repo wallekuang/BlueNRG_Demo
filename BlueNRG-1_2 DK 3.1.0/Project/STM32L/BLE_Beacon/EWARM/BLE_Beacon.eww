@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BLE_Beacon.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>BLE_Beacon</project>
+        <configuration>Release_SPI</configuration>
+      </member>
+      <member>
+        <project>BLE_Beacon</project>
+        <configuration>Release_UART</configuration>
+      </member>
+      <member>
+        <project>BLE_Beacon</project>
+        <configuration>Release_UART_HWFlowCtrl</configuration>
+      </member>
+      <member>
+        <project>BLE_Beacon</project>
+        <configuration>Release_SPI_LowPower</configuration>
+      </member>
+      <member>
+        <project>BLE_Beacon</project>
+        <configuration>Release_UART_LowPower</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

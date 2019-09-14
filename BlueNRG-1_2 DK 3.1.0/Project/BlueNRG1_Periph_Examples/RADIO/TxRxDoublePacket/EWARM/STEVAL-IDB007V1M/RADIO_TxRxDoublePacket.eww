@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_TxRxDoublePacket.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>TxRxDoublePacket</project>
+      <configuration>RX</configuration>
+      </member>
+    <member>
+        <project>TxRxDoublePacket</project>
+      <configuration>TX</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BLE_SensorDemo.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>BLE_SensorDemo</project>
+      <configuration>HigherApp_OTA</configuration>
+      </member>
+    <member>
+        <project>BLE_SensorDemo</project>
+      <configuration>LowerApp_OTA</configuration>
+      </member>
+    <member>
+        <project>BLE_SensorDemo</project>
+      <configuration>Release</configuration>
+      </member>
+    <member>
+        <project>BLE_SensorDemo</project>
+      <configuration>Use_OTA_ServiceManager</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

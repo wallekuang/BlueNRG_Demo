@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\WDG_Reset.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>Reset</project>
+        <configuration>Debug</configuration>
+      </member>
+      <member>
+        <project>Reset</project>
+        <configuration>Release</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

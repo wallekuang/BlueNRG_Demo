@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_Beep.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>Beep</project>
+        <configuration>Beep_Encryption</configuration>
+      </member>
+      <member>
+        <project>Beep</project>
+        <configuration>Beep_NO_Encryption</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BLE_Throughput.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>BLE_Throughput</project>
+      <configuration>Client_bidirectional</configuration>
+      </member>
+    <member>
+        <project>BLE_Throughput</project>
+      <configuration>Client_unidirectional</configuration>
+      </member>
+    <member>
+        <project>BLE_Throughput</project>
+      <configuration>Server_bidirectional</configuration>
+      </member>
+    <member>
+        <project>BLE_Throughput</project>
+      <configuration>Server_unidirectional</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+

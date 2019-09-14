@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_StarNetwork.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>Build_ALL</name>
+      <member>
+        <project>StarNetwork</project>
+        <configuration>Master</configuration>
+      </member>
+      <member>
+        <project>StarNetwork</project>
+        <configuration>Slave</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>

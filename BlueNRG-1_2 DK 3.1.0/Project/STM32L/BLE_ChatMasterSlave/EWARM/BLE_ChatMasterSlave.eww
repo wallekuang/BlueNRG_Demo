@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BLE_ChatMasterSlave.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+      <member>
+        <project>BLE_ChatMasterSlave</project>
+        <configuration>Release_SPI</configuration>
+      </member>
+      <member>
+        <project>BLE_ChatMasterSlave</project>
+        <configuration>Release_UART</configuration>
+      </member>
+      <member>
+        <project>BLE_ChatMasterSlave</project>
+        <configuration>Release_UART_HWFlowCtrl</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

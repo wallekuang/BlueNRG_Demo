@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\DTM.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>Build_ALL</name>
+      <member>
+        <project>DTM</project>
+        <configuration>DTM_SPI</configuration>
+      </member>
+      <member>
+        <project>DTM</project>
+        <configuration>DTM_UART</configuration>
+      </member>
+      <member>
+        <project>DTM</project>
+        <configuration>DTM_UART_HWFlowCtrl</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

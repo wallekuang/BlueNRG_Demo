@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\RADIO_OTA_ResetManager.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>OTA_ResetManager</project>
+      <configuration>OTA_Client</configuration>
+      </member>
+    <member>
+        <project>OTA_ResetManager</project>
+      <configuration>OTA_Server_FixedImage</configuration>
+      </member>
+    <member>
+        <project>OTA_ResetManager</project>
+      <configuration>OTA_Server_Ymodem</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+
