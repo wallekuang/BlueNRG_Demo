@@ -223,6 +223,9 @@ NOTEs:
 #include "Beacon_config.h"
 #include "OTA_btl.h"
 
+#include "sys_time.h"
+
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define BLE_BEACON_VERSION_STRING "1.1.0"
@@ -365,6 +368,18 @@ static void Start_Beaconing(void)
 #endif
 }
 
+
+void time_print(void)
+{
+		static uint32_t last_time = 0;
+		uint32_t cur_time = get_unix_timestamp();
+		if(last_time != cur_time){
+				last_time = cur_time;
+				printf("cur_time:%x \n", cur_time);
+		}
+
+}
+
 int main(void) 
 {
   uint8_t ret;
@@ -403,8 +418,9 @@ int main(void)
     /* BlueNRG-1 stack tick */
     BTLE_StackTick();
         
+		time_print();
     /* Enable Power Save according the Advertising Interval */
-    BlueNRG_Sleep(SLEEPMODE_NOTIMER, 0, 0);
+    BlueNRG_Sleep(SLEEPMODE_WAKETIMER, 0, 0);
     
 #if ST_USE_OTA_SERVICE_MANAGER_APPLICATION
     if (SdkEvalPushButtonGetState(USER_BUTTON) == RESET)
