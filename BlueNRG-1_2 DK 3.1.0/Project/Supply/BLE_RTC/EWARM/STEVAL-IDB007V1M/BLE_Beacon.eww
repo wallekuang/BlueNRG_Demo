@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BLE_Beacon.ewp</path>
+  </project>
+<batchBuild>
+    <batchDefinition>
+      <name>BUILD_ALL</name>
+    <member>
+        <project>BLE_Beacon</project>
+      <configuration>Release</configuration>
+      </member>
+    <member>
+        <project>BLE_Beacon</project>
+      <configuration>Use_OTA_ServiceManager</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
+
