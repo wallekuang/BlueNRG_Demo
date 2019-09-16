@@ -252,8 +252,10 @@ uint32_t savedNVIC_ISPR;
 *  Hot table radio configuration storage.
 *  This variable is only used during the smart power management 
 *  procedure 
-*  ------------------------------------------------------------------------------ */
+*  ------------------------------------------------------------------------------ 
 volatile uint8_t hot_table_radio_config[HOT_TABLE_RADIO_SIZE]={0x00};
+*/
+volatile uint8_t hot_table_radio_config[HOT_TABLE_RADIO_SIZE]={0x02, 0x1C, 0x53, 0x00};
 
 /* ------------------------------------------------------------------------------
 *  volatile uint8_t BOR_config[7]
@@ -609,6 +611,7 @@ REQUIRED(__blue_RAM_struct __blue_RAM) = {0,};
   NUMBER_CONFIG_BYTE, PMU_ANA_ENG_REG,    SMPS_10uH_PMU,              \
   NUMBER_CONFIG_BYTE, CLOCK_ANA_USER_REG, LOW_FREQ_XO,                \
   NUMBER_CONFIG_BYTE, PMU_ANA_USER_REG,   PMU_ANA_USER_RESET_VALUE,   \
+	0x02, 0x1C, 0x53,																										\
   END_CONFIG                                                          \
 }
 

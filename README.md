@@ -1,7 +1,8 @@
 # BlueNRG_Demo
 supplement BlueNRG demo usage
 
-为了方便客户使用BlueNRG-1/2  我补充一些相关的Demo 和增加一些补丁在此工程中
+为了方便客户使用BlueNRG-1/2  我补充一些相关的Demo 和增加一些补丁在此工程中。
+备注: 代码仅供参考，非正式官方发布，使用需要自行测试验证，欢迎汇报问题和提意见建议。
 
 
 1.基于virtual timer 的软件RTC demo:
