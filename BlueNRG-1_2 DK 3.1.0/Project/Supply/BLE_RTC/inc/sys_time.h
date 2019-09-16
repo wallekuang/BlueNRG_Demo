@@ -13,6 +13,12 @@ Date                Author                   Description
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Two-level tick timing is used SECONDARY_TICKS_UNIT ticks is about 1S */ 
+#define SECONDARY_TICKS_UNIT 	(409600)
+
+/* Each tick equals us */
+#define SLICE_TIME    			(2.4414f) 
+
 typedef struct tag_SysTime{
       uint16_t  year;							
       uint8_t   month;						

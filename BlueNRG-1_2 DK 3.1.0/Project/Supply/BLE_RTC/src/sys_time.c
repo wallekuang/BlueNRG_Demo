@@ -9,10 +9,8 @@ Date                Author                   Description
 #include "sys_time.h"
 #include "bluenrg1_stack.h"
 
-/* Each tick equals us */
-#define SLICE_TIME    			(2.4414f) 
-/* Two-level tick timing is used SECONDARY_TICKS_UNIT ticks is about 1S */ 
-#define SECONDARY_TICKS_UNIT 	(409600)
+
+
 
 /* get current system ticks */
 #define GET_TICK	HAL_VTimerGetCurrentTime_sysT32

@@ -369,16 +369,19 @@ static void Start_Beaconing(void)
 }
 
 
-void time_print(void)
+static void time_print(void)
 {
 		static uint32_t last_time = 0;
 		uint32_t cur_time = get_unix_timestamp();
 		if(last_time != cur_time){
 				last_time = cur_time;
-				printf("cur_time:%x \n", cur_time);
+				sysTime_t date = get_date();
+			
+				printf("cur_time:%x ", cur_time);
+			  printf("%d/%d/%d  %d:%d:%d \n", date.month,date.day,date.year, date.hour, date.min, date.sec);
 		}
-
 }
+
 
 int main(void) 
 {
@@ -419,6 +422,8 @@ int main(void)
     BTLE_StackTick();
         
 		time_print();
+
+		
     /* Enable Power Save according the Advertising Interval */
     BlueNRG_Sleep(SLEEPMODE_WAKETIMER, 0, 0);
     
@@ -437,7 +442,8 @@ SleepModes App_SleepMode_Check(SleepModes sleepMode)
 {
   if(SdkEvalComIOTxFifoNotEmpty() || SdkEvalComUARTBusy())
     return SLEEPMODE_RUNNING;
-  
+	
+	
   return SLEEPMODE_NOTIMER;
 }
 
