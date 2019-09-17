@@ -1302,6 +1302,7 @@
                     <state>OTA_EXTENDED_PACKET_LEN=1</state>
                     <state>BLE_STACK_CONFIGURATION=BLE_OTA_BASIC_CONFIGURATION</state>
                     <state>OTA_EXTENDED_PACKET_LEN=1</state>
+                    <state>DEBUG=1</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -2087,7 +2088,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>###Unitialized###</state>
+                    <state>BLE_SensorDemo_import_lib.o</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>
@@ -2208,7 +2209,7 @@
                 </option>
                 <option>
                     <name>OGLastSavedByProductVersion</name>
-                    <state>7.70.1.11471</state>
+                    <state>8.40.1.21529</state>
                 </option>
                 <option>
                     <name>GeneralEnableMisra</name>
@@ -2254,7 +2255,7 @@
                 </option>
                 <option>
                     <name>RTConfigPath2</name>
-                    <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
+                    <state>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</state>
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
@@ -3159,7 +3160,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>###Unitialized###</state>
+                    <state>BLE_SensorDemo_import_lib.o</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>

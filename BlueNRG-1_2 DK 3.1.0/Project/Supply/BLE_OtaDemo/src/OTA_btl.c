@@ -188,12 +188,16 @@ static volatile uint8_t client_DLE_ATT_MTU = 0;
 
 
 #define OTA_LOWER_OR_HIGHER_FLAG_ADDR_POS		(0x200)
+
 // IAR
 #if defined(__ICCARM__) || defined(__IAR_SYSTEMS_ASM__)
 #ifdef ST_OTA_LOWER_APPLICATION
-volatile static uint32_t const OTA_information[4] @ (((APP_LOWER_ADDRESS+OTA_LOWER_OR_HIGHER_FLAG_ADDR_POS))) = {APP_LOWER_ADDRESS};
+// Put information of APP_LOWER_ADDRESS or APP_HIGHER_ADDRESS to bin firmware at 0x200  for the APP can avoid user upgrade a wrong bin file
+#pragma location=((APP_LOWER_ADDRESS+OTA_LOWER_OR_HIGHER_FLAG_ADDR_POS))
+const uint32_t  OTA_information[4] = {APP_LOWER_ADDRESS};
 #else
-volatile static uint32_t const OTA_information[4] @ (((APP_HIGHER_ADDRESS+OTA_LOWER_OR_HIGHER_FLAG_ADDR_POS))) = {APP_HIGHER_ADDRESS};
+#pragma location=((APP_LOWER_ADDRESS+OTA_LOWER_OR_HIGHER_FLAG_ADDR_POS))
+const uint32_t  OTA_information[4] = {APP_HIGHER_ADDRESS};
 #endif
 #else  // keil
 #ifdef __CC_ARM	
@@ -219,6 +223,9 @@ static uint32_t const OTA_information[4]__attribute__((at(APP_HIGHER_ADDRESS+OTA
  */
 void OTA_Jump_To_New_Application()
 {
+   // incase the IAR optimize  OTA_information
+   volatile uint32_t temp = OTA_information[0];
+
   /* Reset manager will take care of running the new application */
   NVIC_SystemReset(); 
 }
@@ -361,6 +368,7 @@ static ErrorStatus FLASH_Verify(uint32_t currentWriteAddress,uint32_t * pbuffer,
  */
 static void OTA_Init(void)
 {
+
   SdkEvalLedInit(OTA_LED); //bootloader is ongoing led
 }
 
