@@ -12,7 +12,7 @@ b.	bool sync_time_by_rtc(uint16_t year,uint8_t month,uint8_t day,
 Explain:
               internal time units is about 2.4114us (1000000/409600)
               409600 ticks is 1s(Relatively accurate)
-              internal time will overflow per 5242879 ms[87 min]).
+
 
 Use caution:
               It must be called periodically in a period  of internal time tick (called period < internal time tick period [87 min])
