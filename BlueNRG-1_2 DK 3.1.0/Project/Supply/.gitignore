@@ -4,4 +4,6 @@
 settings
 *.dep
 Release
+HigherApp_OTA
+LowerApp_OTA
 
