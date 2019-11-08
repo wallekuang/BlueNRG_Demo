@@ -29,7 +29,8 @@ supplement BlueNRG demo usage
 	DTM 工程路径: BlueNRG_Demo\BlueNRG-1_2 DK 3.1.0\Project\BLE_Examples\DTM
 	
 	依旧很多客户做模块喜欢设计自己的透传程序，可以参考如下Demo:
-	
+	BlueNRG-1_2 DK 3.1.0\Project\Supply\BLE_Throughput_MaxGatt
+	这个Demo也包含设置使用最大MTU的方法
 	
 
 5. 使用芯片序列号映射 免费的Random device address
