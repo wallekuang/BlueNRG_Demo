@@ -1,0 +1,252 @@
+#! armcc -E
+/*******************************************************************************
+* BlueNRG-1 generic linker file for KEIL
+* Main linker variables to control it are:
+*
+* MEMORY_FLASH_APP_SIZE: define the size of the application in case not all the flash is needed.
+* Default value is: 156KB when no OTA firmware upgrade is supported
+*
+* MEMORY_FLASH_APP_OFFSET: define the offset of the application.
+* Default value is: 0 offset
+*
+* MEMORY_RAM_APP_OFFSET: define the offset in RAM from which sections can be
+* allocated.
+* Default value is: 0x02CC
+* 
+* ST_OTA_HIGHER_APPLICATION: When defined application is built for OTA support
+* in the higher part of memory
+*
+* ST_OTA_LOWER_APPLICATION: When defined application is built for OTA support
+* in the lower part of memory
+*
+* ST_USE_OTA_SERVICE_MANAGER_APPLICATION: When defined application is built for
+* OTA firmware upgrade support with separated application for firmware upgrade
+*
+*******************************************************************************/
+
+/*******************************************************************************
+* Memory Definitions
+*******************************************************************************/
+/*
+BlueNRG-1 memory map
++-----------------------+ 0x20005FFF
+|  RAM (24K)            |
++-----------------------+ 0x20000000
+|                       |
+|                       |
++-----------------------+ 0x10067FFF
+|                       |
+|  FLASH (160K)         |
++-----------------------+ 0x10040000
+|                       |
++-----------------------| 0x100007FF
+|   ROM (2K)            |
++-----------------------+ 0x10000000
+*/
+
+#define _MEMORY_RAM_BEGIN_    0x20000000 
+#define _MEMORY_RAM_SIZE_     0x6000           /* 24KB  */
+#define _MEMORY_RAM_END_      0x20005FFF 
+
+#define _MEMORY_FLASH_BEGIN_  0x10040000  
+#define _MEMORY_FLASH_SIZE_   0x28000          /* 160KB */ 
+#define _MEMORY_FLASH_END_    0x10067FFF  
+
+#define _MEMORY_ROM_BEGIN_    0x10000000    
+#define _MEMORY_ROM_SIZE_     0x800             /* 2KB */ 
+#define _MEMORY_ROM_END_      0x100007FF  
+
+
+/* Reserved for BTLE stack non volatile memory */
+#define FLASH_NVM_DATASIZE     (4*1024)
+
+#ifndef MEMORY_RAM_APP_OFFSET
+#define MEMORY_RAM_APP_OFFSET  	 (0x02CC)
+#endif 
+
+#ifndef RESET_MANAGER_SIZE
+#define RESET_MANAGER_SIZE  	 (0x800)
+#endif 
+
+
+#ifdef ST_OTA_HIGHER_APPLICATION
+  /* This configuration is intended for application supporting OTA firmware upgrade with 2-app scheme (app in the upper part of memory map) */
+  /*
+     BlueNRG-1 OTA firmware upgrade support for higher application memory map
+     +-----------------------+ 0x20005FFF
+     |  RAM (24K-4)          |
+     +-----------------------+ 0x20000004
+     |                       |
+     |                       |
+     +-----------------------+ 0x10068000
+     |                       |
+     |  NVM(4K)              |
+     +-----------------------+ 0x10066800
+     |                       |
+     |  Higher app (76K)     |
+     +-----------------------+ 0x10053800
+     |                       |
+     |  Lower app (76K)      |
+     +-----------------------| 0x10040800
+     |   Reset Manager (2K)  |
+     +-----------------------+ 0x10040000
+     |                       |
+     +-----------------------| 0x100007FF
+     |   ROM (2K)            |
+     +-----------------------+ 0x10000000
+  */
+
+/* Divide remaining space by 2 and round to the sector boundary. */
+#define MEMORY_FLASH_APP_SIZE  (((_MEMORY_FLASH_SIZE_ - RESET_MANAGER_SIZE - FLASH_NVM_DATASIZE)/2)/2048)*2048
+#define MEMORY_FLASH_APP_OFFSET  (RESET_MANAGER_SIZE + MEMORY_FLASH_APP_SIZE)
+
+#else
+#ifdef ST_OTA_LOWER_APPLICATION
+  /* This configuration is intended for application supporting OTA firmware upgrade with 2-app scheme (app in the lower part of memory map) */
+  /*
+     BlueNRG-1 OTA firmware upgrade support for lower application memory map
+     +-----------------------+ 0x20005FFF
+     |  RAM (24K-4)          |
+     +-----------------------+ 0x20000004
+     |                       |
+     |                       |
+     +-----------------------+ 0x10068000
+     |                       |
+     |  NVM(4K)              |
+     +-----------------------+ 0x10066800
+     |                       |
+     |  Higher app (76K)     |
+     +-----------------------+ 0x10053800
+     |                       |
+     |  Lower app (76K)      |
+     +-----------------------| 0x10040800
+     |   Reset Manager (2K)  |
+     +-----------------------+ 0x10040000
+     |                       |
+     +-----------------------| 0x100007FF
+     |   ROM (2K)            |
+     +-----------------------+ 0x10000000
+  */
+
+#define MEMORY_FLASH_APP_SIZE  (((_MEMORY_FLASH_SIZE_ - RESET_MANAGER_SIZE - FLASH_NVM_DATASIZE)/2)/2048)*2048
+#define MEMORY_FLASH_APP_OFFSET  (RESET_MANAGER_SIZE)
+
+#else
+#ifdef ST_USE_OTA_SERVICE_MANAGER_APPLICATION
+  /* This configuration is intended for application supporting OTA firmware upgrade with independent OTA firmware upgrade service manager
+  (app in the upper part of memory map) */
+  /*
+     BlueNRG-1 OTA firmware upgrade support for service manager application memory map
+     +-----------------------+ 0x20005FFF
+     |  RAM (24K-4)          |
+     +-----------------------+ 0x20000004
+     |                       |
+     |                       |
+     +-----------------------+ 0x10068000
+     |                       |
+     |  NVM(4K)              |
+     +-----------------------+ 0x10067000
+     |                       |
+     |  User app (88K)       |
+     +-----------------------+ 0x10051000
+     |  OTA Service          |
+     |  Manager (68K)        |
+     +-----------------------+ 0x10040000
+     |                       |
+     +-----------------------| 0x100007FF
+     |   ROM (2K)            |
+     +-----------------------+ 0x10000000
+  */
+
+ /* Including OTA firmware upgrade service manager application */
+#define SERVICE_MANAGER_SIZE     0x11000
+
+#define MEMORY_FLASH_APP_SIZE  (_MEMORY_FLASH_SIZE_ - SERVICE_MANAGER_SIZE - FLASH_NVM_DATASIZE)
+#define MEMORY_FLASH_APP_OFFSET  (SERVICE_MANAGER_SIZE)
+
+#else
+  /* This configuration is intended for application not supporting OTA firmware upgrade */
+  /*
+  BlueNRG-1 standard application memory map
+  +-----------------------+ 0x20005FFF
+  |  RAM (24K)            |
+  +-----------------------+ 0x20000000
+  |                       |
+  |                       |
+  +-----------------------+ 0x10068000
+  |                       |
+  |  NVM(4K)              |
+  +-----------------------+ 0x10067000
+  |                       |
+  |  User app (156K)      |
+  +-----------------------+ 0x10040000
+  |                       |
+  +-----------------------| 0x100007FF
+  |   ROM (2K)            |
+  +-----------------------+ 0x10000000
+*/
+
+#ifndef MEMORY_FLASH_APP_OFFSET
+#define MEMORY_FLASH_APP_OFFSET  (0)
+#endif
+
+#ifndef MEMORY_FLASH_APP_SIZE
+#define MEMORY_FLASH_APP_SIZE  (_MEMORY_FLASH_SIZE_ - FLASH_NVM_DATASIZE - MEMORY_FLASH_APP_OFFSET)
+#endif
+
+#endif
+#endif
+#endif
+  
+LR_IROM2 (_MEMORY_FLASH_BEGIN_) MEMORY_FLASH_APP_OFFSET  {    ; load region size_region
+  REGION_FLASH_BOOTLOADER (_MEMORY_FLASH_BEGIN_) (MEMORY_FLASH_APP_OFFSET)  {  ; load address = execution address
+   *.o (.bootloader)
+  }
+}
+
+LR_IROM1 (_MEMORY_FLASH_BEGIN_+MEMORY_FLASH_APP_OFFSET) _MEMORY_FLASH_SIZE_  {    ; load region size_region
+  REGION_FLASH (_MEMORY_FLASH_BEGIN_ + MEMORY_FLASH_APP_OFFSET) (MEMORY_FLASH_APP_SIZE)  {  ; load address = execution address
+   *.o (.intvec, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO)
+  }
+  BLOCK_STACKLIB_FLASH_DATA (_MEMORY_FLASH_END_- FLASH_NVM_DATASIZE + 1) UNINIT FLASH_NVM_DATASIZE  {
+  *.o (.noinit.stacklib_flash_data)
+  *.o (.noinit.stacklib_stored_device_id_data)
+  }
+  ota_sw_activation_block 0x20000004 UNINIT 4 {
+   *.o (.ota_sw_activation)
+  }
+  savedMSP_block 0x20000008 4 {
+   *.o (.savedMSP)
+  }
+  wakeupFromSleepFlag_block 0x2000000C 4 {
+   *.o (.wakeupFromSleepFlag)
+  }
+  app_base_block 0x20000010 4 {
+   *.o (.app_base)
+  }
+  flash_sw_lock_block 0x20000014 4 {
+   *.o (.flash_sw_lock)
+  }
+  rfTimeout_block 0x20000018 4 {
+   *.o (.rfTimeout)
+  }
+  Blue_Flag_Ram_block 0x20000030 4 {
+   *.o (.__blueflag_RAM)
+  }
+  Crash_Info_block 0x20000034 UNINIT 40 {  
+  *.o (.__crash_RAM)
+  }
+  BLUE 0x200000C0 0x20C {
+  *.o (.bss.__blue_RAM)
+  }
+  REGION_RAM2 (_MEMORY_RAM_BEGIN_ + MEMORY_RAM_APP_OFFSET) (_MEMORY_RAM_SIZE_ - MEMORY_RAM_APP_OFFSET) {  ; RW data
+   .ANY (+RW, +BSS)
+  }
+  REGION_RAM3 +0 UNINIT (_MEMORY_RAM_SIZE_ - MEMORY_RAM_APP_OFFSET) {  ; RW data not initialized
+   *.o (.noinit.data)
+  }
+  REGION_ROM _MEMORY_ROM_BEGIN_ EMPTY _MEMORY_ROM_SIZE_  { }
+  ARM_LIB_STACKHEAP (_MEMORY_RAM_END_+1) EMPTY -0xC00 { }
+}
